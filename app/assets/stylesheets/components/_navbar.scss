@@ -1,12 +1,45 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+.navbar {
+  background: blueviolet;
+  position: sticky;
+  top: 0px;
+  z-index: 1;
+
+  h1 {
+    font-size: 20px;
+    font-weight: 900;
+    color: white;
+    margin: 0;
+  }
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.tab {
+  font-size: 14px;
+  color: white;
+  text-decoration: none;
+  opacity: 0.7;
+  margin: 10px;
+
+  &:hover {
+    color: white;
+    font-weight: 400;
+    opacity: 1;
+  }
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.tab.active {
+  color: white;
+  font-weight: 600;
+  opacity: 1;
+  padding-bottom: 13px;
+  border-bottom: solid 5px;
+}
+
+#log-out-icon {
+  text-decoration: none;
+  color: white;
+  opacity: 0.7;
+
+  &:hover {
+  opacity: 1;
+  }
 }
