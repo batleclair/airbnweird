@@ -1,0 +1,32 @@
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+  height: 400px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.card {
+  background-color: $card_background;
+  box-shadow: 4px 4px 4px 4px lightgray;
+  color: white;
+  border-radius: 10px;
+  display: flex;
+  opacity: 0.8;
+}
+
+.card:hover {
+  opacity: 1.2;
+}
+
+.picture {
+  background-color: lightgray;
+  height: 300px;
+  width: 300px;
+}
+
+.card-subtitle {
+  font-style: italic;
+}
