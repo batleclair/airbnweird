@@ -11,10 +11,41 @@
   </head>
 
   <body>
+
+    <div class="d-flex justify-content-between navbar p-2">
+      <h1>airbnweird</h1>
+        <% if user_signed_in? %>
+          <div>
+            <a href="" class="tab">Book a friend</a>
+            <a href="" class="tab">Rent a friend</a>
+            <a href="" class="tab active">My bookings</a>
+          </div>
+          <div>
+            <p><%= current_user.name %></p>
+            <img class="avatar" src="https://avatars.githubusercontent.com/u/101575940?s=400&u=4c082b8085bffceae067e44f8fd57668ccc1e9eb&v=4" alt="">
+            <a id="log-out-icon" href=""><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+          </div>
+        <% else %>
+          <div>
+            <a href="" class="btn btn-primary">Sign-up</a>
+            <a href="" class="btn btn-primary">Sign-in</a>
+          </div>
+        <% end %>
+    </div>
+
+    <%= yield %>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-    <%= yield %>
+    <div class="footer">
+      <p>all rights reserved 🤪🦄 | follow us on</p>
+      <div class="d-flex justify-content-center">
+        <a href=""><i class="fa-brands fa-facebook"></i></a>
+        <a href=""><i class="fa-brands fa-instagram"></i></a>
+        <a href=""><i class="fa-brands fa-pinterest"></i></a>
+      </div>
+    </div>
 
   </body>
 </html>
