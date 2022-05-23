@@ -1,0 +1,10 @@
+<h1>Friends#new</h1>
+<p>Find me in app/views/friends/new.html.erb</p>
+<%= simple_form_for(@friend) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :category %>
+  <%= f.input :language %>
+  <%= f.input :price %>
+  <%= f.submit, class: "btn btn-primary" %>
+<% end %>
