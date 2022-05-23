@@ -23,12 +23,12 @@
           <div>
             <p><%= current_user.name %></p>
             <img class="avatar" src="https://avatars.githubusercontent.com/u/101575940?s=400&u=4c082b8085bffceae067e44f8fd57668ccc1e9eb&v=4" alt="">
-            <a id="log-out-icon" href=""><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+            <a id="log-out-icon" href="/users/sign_out"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
           </div>
         <% else %>
           <div>
-            <a href="" class="btn btn-primary">Sign-up</a>
-            <a href="" class="btn btn-primary">Sign-in</a>
+            <a href="/users/sign_up" class="btn btn-primary">Sign-up</a>
+            <a href="/users/sign_in" class="btn btn-primary">Sign-in</a>
           </div>
         <% end %>
     </div>
