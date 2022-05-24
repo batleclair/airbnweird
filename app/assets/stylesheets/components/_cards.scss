@@ -1,32 +1,29 @@
-
-.cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 20px;
-  height: 400px;
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
-
-.card {
-  background-color: $card_background;
-  box-shadow: 4px 4px 4px 4px lightgray;
-  color: white;
-  border-radius: 10px;
+.friend-tile {
+  background-color: white;
+  height: 200px;
+  border-radius: 5px;
   display: flex;
-  opacity: 0.8;
+  box-shadow: 6px 6px 10px rgba(0,0,0,0.3);
 }
 
-.card:hover {
-  opacity: 1.2;
+.friend-tile-content {
+  padding: 5px;
 }
 
-.picture {
-  background-color: lightgray;
-  height: 300px;
-  width: 300px;
+.friend-tile-content-up {
+  height: 165px;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.card-subtitle {
-  font-style: italic;
+.friend-tile-content-up > h5 {
+  font-weight: 700;
+  font-size: 20px;
+  color: blueviolet;
+}
+
+.friend-tile-content-up > p {
+  font-size: 13px;
+  color: rgb(100,100,100);
 }

@@ -1,8 +1,14 @@
 .banner {
-  background-color: lightgray;
-  height: 600px;
+  background-image: linear-gradient(rgba(60, 0, 87, 0.297),rgba(76, 0, 84, 0.4)), url('https://static-prod.adweek.com/wp-content/uploads/2017/09/imaginary-friends-society-final-hed-2017.jpg');
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 30px;
+}
+
+.banner-infos {
+  color: white;
+  background-color: violet;
+  padding: 20px;
+  margin: 200px 0px 100px;
 }
