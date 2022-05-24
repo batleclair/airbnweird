@@ -12,6 +12,11 @@
 
 
 // Hide the notice messages ("Welcome" / "Log-in successfully" etc.)
+
 .notice {
   display: none;
+}
+
+.container {
+  max-width: 90%;
 }

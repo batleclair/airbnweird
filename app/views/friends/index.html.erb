@@ -1,15 +1,4 @@
-<h1>Find the right friend for you</h1>
 <div class="container">
-  <div class = "cards">
-     <% @friends.each do |friend| %>
-    <div class="card">
-      <p><%= friend.name %></p>
-      <p><%= friend.description %></p>
-      <p><%= friend.category %></p>
-      <p><%= friend.language %></p>
-      <p><%= friend.price %></p>
-      <p><%= cl_image_tag friend.photo.key, height: 100, width: 100, crop: :fill %></p>
-    </div>
-    <% end %>
-  </div>
+  <h2><%=@friends.length%> friends available for you</h2>
+  <%= render "shared/card" %>
 </div>
