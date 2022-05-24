@@ -1,6 +1,5 @@
 class FriendsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show search]
-  before_action :set_user, only: [:show]
 
   def index
     @friends = policy_scope(Friend)

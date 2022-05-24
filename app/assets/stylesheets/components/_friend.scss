@@ -1,0 +1,25 @@
+.friend-large-photo {
+  padding: 50px;
+  background-size: cover;
+  height: 350px;
+  width: 350px;
+  border: solid 1px lightgrey;
+}
+
+.friend-details {
+  h3 {
+    color: blueviolet;
+    font-weight: 700;
+  }
+}
+
+.friend-stats {
+  display: flex;
+  justify-content: space-between;
+  border: solid 1px lightgrey;
+  padding: 10px 10px 0px 10px;
+}
+
+.star-violet {
+  color: blueviolet;
+}
