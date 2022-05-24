@@ -9,7 +9,7 @@
   <div class="row">
     <% @friends.each do |friend| %>
       <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-3">
-        <%= link_to friend_path(friend.id) do %>
+        <%= link_to friend_path(friend.id), class: "link_card" do %>
           <div class="friend-tile">
             <%= cl_image_tag friend.photo.key, height: 200, width: 100, crop: :fill %>
             <div class="friend-tile-content">
