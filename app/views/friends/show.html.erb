@@ -1,0 +1,39 @@
+<div class="banner banner-half-page" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.2) 0%, rgba(0,36,61,0.2) 50%), url(<%= @friend.photo.file.nil? ? "http://d279m997dpfwgl.cloudfront.net/wp/2019/10/IUJeYqv-1000x1154.jpg" : cloudinary_url(@friend.photo) %>); background-position: center;">
+</div>
+<div class="container">
+  <div class="row bottom-margin-sm">
+    <div class="col-xs-9">
+      <h3><%= @friend.name %></h3>
+      <h6><%= @friend.category %></h6>
+      <h6><%= @friend.language %></h6>
+     <hr>
+     <hr>
+    <div>
+      <h5><strong>Description</strong></h5>
+      <p><%= @friend.description %></p>
+      <hr>
+      <div class="container">
+        <div class="row">
+          <h4><strong> Friend owner</strong></h4>
+          <div class="col-md-1">
+            <p>Name: <%= @user.name %></p>
+            <p>Name: <%= @user.pathology %></p>
+          </div>
+          <div class="col-md-11">
+            <div class="wrapper" style="margin-left: 15px;">
+              <p><i class="fas fa-home"></i> Price <%= @friend.price %> euros</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+
+  <div class="row">
+    <div class="col-xs-9">
+      <hr>
+      <h5>Exact location information is provided after a booking is confirmed.</h5>
+    </div>
+  </div>
+</div>
