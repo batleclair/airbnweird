@@ -3,8 +3,8 @@ class FriendsController < ApplicationController
   before_action :set_user, only: [:show]
 
   def index
-    authorize @friend
-    @friends = Friend.all
+    @friends = policy_scope(Friend)
+    authorize @friends
   end
 
   def new
@@ -13,34 +13,34 @@ class FriendsController < ApplicationController
   end
 
   def create
-    authorize @friend
     @friend = Friend.new(friend_params)
     @friend.save
     redirect_to new_user_friend_path(@friend)
+    authorize @friend
   end
 
   def show
-    authorize @friend
     @friend = Friend.find(params[:id])
+    authorize @friend
   end
 
   def edit
-    authorize @friend
     @friend = Friend.find(params[:id])
+    authorize @friend
   end
 
   def update
-    authorize @friend
     @friend = Friend.find(params[:id])
     @friend.update(friend_params)
     redirect_to new_user_friend_path(@friend)
+    authorize @friend
   end
 
   def destroy
-    authorize @friend
     @friend = Friend.find(params[:id])
     @friend.destroy
     redirect_to friends_path, status: :see_other
+    authorize @friend
   end
 
   private
