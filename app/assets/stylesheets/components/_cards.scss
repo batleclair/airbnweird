@@ -28,8 +28,8 @@
   color: rgb(100,100,100);
 }
 
-:any-link {
-  text-decoration: none;
+.link_card {
+  text-decoration: none !important;
   color: black;
   &:hover {
     color: black;
