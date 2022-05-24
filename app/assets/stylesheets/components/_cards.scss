@@ -27,3 +27,12 @@
   font-size: 13px;
   color: rgb(100,100,100);
 }
+
+:any-link {
+  text-decoration: none;
+  color: black;
+  &:hover {
+    color: black;
+    opacity: 0.8;
+  }
+}
