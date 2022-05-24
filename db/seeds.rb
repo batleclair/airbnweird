@@ -10,8 +10,8 @@ require "open-uri"
 
 puts 'seeding weird stuff'
 
-User.delete_all
 Friend.delete_all
+User.delete_all
 
 5.times do
   user = User.new
