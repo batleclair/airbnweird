@@ -1,6 +1,6 @@
 .footer {
   background: blueviolet;
-  padding: 40px;
+  padding: 30px;
   color: white;
   text-align: center;
 
@@ -19,5 +19,14 @@
       color: white;
       opacity: 1;
     }
+  }
+}
+
+.content-wrapper {
+  min-height: calc(100vh - 90px - 90px);
+  &.auto-center {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
   }
 }

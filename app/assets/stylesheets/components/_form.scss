@@ -1,0 +1,35 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.form-inputs {
+  padding: 10px;
+  width: 600px;
+  justify-content: center;
+}
+
+.form-control {
+  background-color: #edede9;
+  border: 2px solid lightgray;
+  border-radius: 5px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  #log-in {
+    margin-top: 5px;
+  }
+
+  #sign-up {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+}
