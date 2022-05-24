@@ -4,15 +4,29 @@
       <% end %>
         <% if user_signed_in? %>
           <div>
-            <a href="" class="tab">Book a friend</a>
-            <a href="" class="tab">Rent a friend</a>
             <a href="" class="tab active">My bookings</a>
+            <a href="" class="tab">Rent a friend</a>
           </div>
-          <div class="user-infos">
-            <p><%= current_user.name %></p>
-            <img class="avatar" src="https://avatars.githubusercontent.com/u/101575940?s=400&u=4c082b8085bffceae067e44f8fd57668ccc1e9eb&v=4" alt="">
-            <a id="log-out-icon" href="/users/sign_out"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
-          </div>
+          <ul class="navbar-nav me-auto list-inline text-center d-flex justify-content-center align-items-center">
+            <li class="nav-item active list-inline-item">
+              <a class="nav-link" href="#"><%= current_user.name %></a>
+            </li>
+
+            <li class="nav-item dropdown list-inline-item">
+             <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src= <%= current_user.photo.file.nil? ? "https://bip.cnrs.fr/wp-content/uploads/2019/11/user.jpg" : cloudinary_url(current_user.photo) %> alt="">
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/users/edit">Edit</a>
+                <a class="dropdown-item" href="/users">Delete</a>
+              </div>
+            </li>
+
+            <li class ="nav-item list-inline-item">
+              <a class ="fa-solid fa-arrow-right-from-bracket" id="log-out-icon" href="/users/sign_out"></a>
+            </li>
+          <!--li class="nav-item"-->
+          <!--/li-->
+          </ul>
+
         <% else %>
           <div>
             <a href="/users/sign_up" class="btn btn-primary">Sign-up</a>

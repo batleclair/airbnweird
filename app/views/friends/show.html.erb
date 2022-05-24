@@ -16,8 +16,9 @@
         <div class="row">
           <h4><strong> Friend owner</strong></h4>
           <div class="col-md-1">
-            <p>Name: <%= @user.name %></p>
-            <p>Name: <%= @user.pathology %></p>
+            <p>Name: <%= @friend.user.name %></p>
+            <%= image_tag image_path(@friend.user.photo), class: "img-circle", style:"width:100px;"%>
+            <p>Name: <%= @friend.user.e-mail %></p>
           </div>
           <div class="col-md-11">
             <div class="wrapper" style="margin-left: 15px;">
