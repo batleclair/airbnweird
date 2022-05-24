@@ -1,16 +1,19 @@
 <div class="container">
+  <%= link_to "All Friends", friends_path, class:"button-banner" %>
   <div class="banner">
     <div class="banner-infos">
       <h3 class="banner-title">You are unique, you deserve a best friend like you.</h3>
-      <% @friends.each do |friend| %>
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title"><%= friend.name %></h5>
-            <h6 class="card-subtitle mb-2"><%= friend.category %></h6>
-            <p class="card-text"><%= friend.description %></p>
+      <div class="cards">
+        <% @friends.each do |friend| %>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><%= friend.name %></h5>
+              <h6 class="card-subtitle mb-2"><%= friend.category %></h6>
+              <p class="card-text"><%= friend.description %></p>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
   <h2>Discover some of our best profiles :</h2>
