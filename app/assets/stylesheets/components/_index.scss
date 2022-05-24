@@ -8,3 +8,9 @@
 @import "cards";
 @import "footer";
 @import "form";
+
+
+// Hide the notice messages ("Welcome" / "Log-in successfully" etc.)
+.notice {
+  display: none;
+}
