@@ -1,0 +1,13 @@
+<h1>Find the right friend for you</h1>
+<div class="container">
+  <div class = "card">
+    <% @friends.each do |friend| %>
+    <p><%= friend.name %></p>
+    <p><%= friend.description %></p>
+    <p><%= friend.category %></p>
+    <p><%= friend.language %></p>
+    <p><%= friend.price %></p>
+    <p><%= friend.photo %></p>
+    <% end %>
+  </div>
+</div>
