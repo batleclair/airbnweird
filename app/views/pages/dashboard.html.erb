@@ -7,7 +7,7 @@
 <% end %>
 
 <h1>My own friends</h1>
-
+<h2><%= current_user.name %></h2>
 <% @own_friends.each do |friend| %>
   <p><%= friend.name %></p>
 <% end %>
