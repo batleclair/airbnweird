@@ -1,4 +1,6 @@
 <div class="container">
-  <h2><%=@friends.length%> friends available for you</h2>
+  <hr>
+  <h2 style= "text-align: center"><%=@friends.length%> friends available for you <%=@current_user.name%> </h2>
+  <hr>
   <%= render "shared/card" %>
 </div>
