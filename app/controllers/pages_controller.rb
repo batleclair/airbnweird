@@ -7,6 +7,10 @@ class PagesController < ApplicationController
 
   def dashboard
     @bookings = Booking.where(user_id: current_user.id)
-    @own_friends = Friend.where(user_id: current_user.id)
+    @friends = Friend.where(user_id: current_user.id)
+    @sales = []
+    @friends.each do |friend|
+      friend.bookings.each { |booking| @sales << booking }
+    end
   end
 end
