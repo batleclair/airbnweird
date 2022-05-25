@@ -27,6 +27,12 @@ class FriendsController < ApplicationController
       @duration = @booking.end_date - @booking.start_date
     end
     authorize @friend
+    @markers =
+      [{
+        lat: @friend.latitude,
+        lng: @friend.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {friend: @friend})
+      }]
   end
 
   def edit
