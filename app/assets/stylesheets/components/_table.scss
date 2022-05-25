@@ -1,0 +1,28 @@
+.dashboard-purple-title {
+  background-color: blueviolet;
+  color: white;
+  padding: 10px;
+
+  h2 {
+    font-weight: 700;
+    font-size: 22px;
+  }
+}
+
+.dashboard-div {
+  padding: 10px;
+
+  h3 {
+    font-size: 18px;
+    font-weight: 700;
+  }
+  h4 {
+    font-size: 15px;
+  }
+}
+
+.dashboard-table {
+  border: solid 1px lightgray;
+  background-color: rgb(225,225,225);
+  width: 100%;
+}

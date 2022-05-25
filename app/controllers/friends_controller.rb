@@ -23,9 +23,6 @@ class FriendsController < ApplicationController
     @booking = Booking.new
     @booking.user_id = current_user.id
     @booking.friend_id = @friend.id
-    unless (@booking.end_date || @booking.start_date).nil?
-      @duration = @booking.end_date - @booking.start_date
-    end
     authorize @friend
     @markers =
       [{
