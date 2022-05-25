@@ -20,7 +20,19 @@ class FriendsController < ApplicationController
 
   def show
     @friend = Friend.find(params[:id])
+    @booking = Booking.new
+    @booking.user_id = current_user.id
+    @booking.friend_id = @friend.id
+    unless (@booking.end_date || @booking.start_date).nil?
+      @duration = @booking.end_date - @booking.start_date
+    end
     authorize @friend
+    @markers =
+      [{
+        lat: @friend.latitude,
+        lng: @friend.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {friend: @friend})
+      }]
   end
 
   def edit
@@ -44,11 +56,7 @@ class FriendsController < ApplicationController
 
   private
 
-  def set_user
-    @user = User.find(params[:user_id])
-  end
-
   def friend_params
-    params.require(:friend).permit(:name, :description, :category, :language, :price)
+    params.require(:friend).permit(:name, :description, :category, :language, :price, :photo)
   end
 end
