@@ -2,13 +2,14 @@
 .friends {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 15px;
+  grid-gap: 20px;
   margin-bottom: 20px;
 }
 
 .friend-card {
   background-color: white;
-  position: relative;
+  display: flex;
+  // position: relative;
   height: 200px;
   width: 400px;
   border-radius: 5px;
@@ -17,17 +18,23 @@
 }
 
 .friend-card {
+
+  .image {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
   .image:hover {
     filter: brightness(70%);
+  }
+
+  :hover {
+    opacity: 0.8;
   }
 }
 
 .friend-content {
-  position: absolute;
-  top: 50%;
-  left: 25%;
-  transform: translate(-10%, -50%);
-  background-color: white;
+  padding: 20px;
 
   h5 {
     font-weight: 700;
@@ -42,11 +49,11 @@
 }
 
 .active {
-  visibility: visible;
+  display: block;
 }
 
 .disable {
-  visibility: hidden;
+  display: none;
 }
 
 .friend-tile {
@@ -68,16 +75,16 @@
   text-overflow: ellipsis;
 }
 
-.friend-tile-content-up > h5 {
-  font-weight: 700;
-  font-size: 20px;
-  color: blueviolet;
-}
+// .friend-tile-content-up > h5 {
+//   font-weight: 700;
+//   font-size: 20px;
+//   color: blueviolet;
+// }
 
-.friend-tile-content-up > p {
-  font-size: 13px;
-  color: rgb(100,100,100);
-}
+// .friend-tile-content-up > p {
+//   font-size: 13px;
+//   color: rgb(100,100,100);
+// }
 
 .link_card {
   text-decoration: none !important;

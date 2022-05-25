@@ -22,19 +22,23 @@
 
 <div class="friends">
   <% @friends.each do |friend| %>
-    <div class="friend-card"
-      data-controller="card"
-      data-action="mouseover->card#showCard mouseout->card#hideCard"
-    >
-        <%= cl_image_tag friend.photo.key, height: 200, width: 400, crop: :fill, class:"image" %>
-        <div class="friend-content disable"
-              data-action="mouseover->card#showCard mouseout->card#hideCard"
-              data-card-target="content"
-        >
-          <h5><%= friend.name %></h5>
-          <h6><%= friend.category %></h6>
-          <p><%= friend.description %></p>
-      </div>
-    </div>
+    <%= link_to friend_path(friend.id), class: "link_card" do %>
+      <div class="friend-card"
+        data-controller="card"
+        data-action="mouseover->card#showCard mouseout->card#hideCard">
+          <div class="image"
+            data-card-target="image">
+              <%= cl_image_tag friend.photo.key, class:"image" %>
+          </div>
+          <div class="friend-content disable w-100 h-100"
+            data-card-target="content">
+            <h5><%= friend.name %></h5>
+            <h6><%= friend.category %></h6>
+            <p><%= friend.description %></p>
+            <span><i class="fa-solid fa-euro-sign"></i><%= friend.price %>€</span>
+            <span><i class="fa-solid fa-star"></i>-</span>
+          </div>
+        </div>
+    <% end %>
   <% end %>
 </div>

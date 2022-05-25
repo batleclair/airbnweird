@@ -2,22 +2,20 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="card"
 export default class extends Controller {
-  static targets = ["content"]
+  static targets = ["content", "image"]
   connect() {
   }
 
   showCard() {
     this.contentTarget.classList.add("active")
-    console.log('active added')
     this.contentTarget.classList.remove("disable")
-    console.log('disable removed')
-    this.contentTarget
+    this.imageTarget.classList.add("disable")
   }
 
   hideCard() {
     this.contentTarget.classList.remove("active")
-    console.log('active removed')
     this.contentTarget.classList.add("disable")
-    console.log('disable added')
+    this.imageTarget.classList.remove("disable")
+    this.imageTarget.classList.add("active")
   }
 }
