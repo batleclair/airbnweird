@@ -7,12 +7,11 @@
         <p class="star-violet"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star-half-stroke"></i><i class="fa-regular fa-star"></i></p>
       </div>
     </div>
-
-      <div class="ms-3 me-3 col-xs-9 friend-details">
-        <h3>Name: <%= @friend.name %></h3>
-        <h6>Category: <%= @friend.category %></h6>
-        <h6>Native language: <%= @friend.language %></h6>
-        <hr>
+    <div class="ms-3 me-3 col-xs-9 friend-details">
+      <h3>Name: <%= @friend.name %></h3>
+      <h6>Category: <%= @friend.category %></h6>
+      <h6>Native language: <%= @friend.language %></h6>
+      <hr>
       <div>
         <h5><strong>Description</strong></h5>
         <p>Description: <%= @friend.description %></p>
@@ -20,7 +19,15 @@
         <h4><strong> Friend owner</strong></h4>
         <p>Owner's name: <%= @friend.user.name %></p>
       </div>
-
-  </div>
+    </div>
+    <div class="card" data-controller="duration">
+      <h2><%= @friend.price %>€ day</h2>
+      <%= simple_form_for [@friend, @booking] do |f| %>
+        <%= f.input :start_date, input_html: { data: { duration_target:"startDate", type:"number"} } %>
+        <%= f.input :end_date, input_html: { data: { duration_target:"endDate", type:"number"} } %>
+        <%= f.submit class: "btn btn-primary", value: "Reserve" %>
+      <% end %>
+      <p class='price'></p>
+    </div>
   </div>
 </div>
