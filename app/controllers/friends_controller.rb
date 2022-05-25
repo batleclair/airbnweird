@@ -7,15 +7,19 @@ class FriendsController < ApplicationController
   end
 
   def new
-    authorize @friend
     @friend = Friend.new
+    authorize @friend
   end
 
   def create
     @friend = Friend.new(friend_params)
-    @friend.save
-    redirect_to new_user_friend_path(@friend)
+    @friend.user = current_user
     authorize @friend
+    if @friend.save
+      redirect_to friend_path(@friend)
+    else
+      render :new
+    end
   end
 
   def show

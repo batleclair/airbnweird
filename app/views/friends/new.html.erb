@@ -1,13 +1,13 @@
-<h1>Friends#new</h1>
-<p>Find me in app/views/friends/new.html.erb</p>
-<%= simple_form_for(@friend) do |f| %>
+<h1>Present your friend to out amazing community!</h1>
+<p>... Show them how  special your bond is</p>
+
+<%= simple_form_for (@friend) do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.input :category %>
-  <%= f.input :address, input_html: {data: {address_autocomplete_target: "address"}},
-  wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}, class: "d-none"} %>
+  <%= f.input :address, input_html: {data: {address_autocomplete_target: "address"}},wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}, class: "d-none"} %>
   <%= f.input :language %>
   <%= f.input :price %>
   <%= f.input :photo, as: :file %>
-  <%= f.submit, class: "btn btn-primary" %>
+  <%= f.submit class: "btn btn-primary" %>
 <% end %>
