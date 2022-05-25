@@ -29,7 +29,7 @@ end
   friend.price = rand(50..250)
   friend.description = Faker::TvShows::RickAndMorty.quote
   friend.address = Faker::Address.full_address
-  file_path = Faker::LoremFlickr.image(size: "200x200", search_terms: ['animal'])
+  file_path = Faker::LoremFlickr.image(size: "200x200", search_terms: ['funny', 'imagination'])
   file = URI.open(file_path)
   friend.photo.attach(io: file, filename: "#{friend.name}-#{friend.user.name}", content_type: "image/jpg")
   friend.save
