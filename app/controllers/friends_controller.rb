@@ -21,6 +21,12 @@ class FriendsController < ApplicationController
   def show
     @friend = Friend.find(params[:id])
     authorize @friend
+    @markers =
+      [{
+        lat: @friend.latitude,
+        lng: @friend.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {friend: @friend})
+      }]
   end
 
   def edit
