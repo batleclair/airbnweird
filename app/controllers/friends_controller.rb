@@ -21,8 +21,6 @@ class FriendsController < ApplicationController
   def show
     @friend = Friend.find(params[:id])
     @booking = Booking.new
-    @booking.user_id = current_user.id
-    @booking.friend_id = @friend.id
     authorize @friend
     @markers =
       [{
