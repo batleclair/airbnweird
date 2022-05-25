@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import CardController from "./card_controller.js"
+application.register("card", CardController)
+
 import AddressAutocompleteController from "./address_autocomplete_controller.js"
 application.register("address-autocomplete", AddressAutocompleteController)
 
