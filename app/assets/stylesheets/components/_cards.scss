@@ -1,3 +1,54 @@
+
+.friends {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 15px;
+  margin-bottom: 20px;
+}
+
+.friend-card {
+  background-color: white;
+  position: relative;
+  height: 200px;
+  width: 400px;
+  border-radius: 5px;
+  box-shadow: 6px 6px 10px rgba(0,0,0,0.3);
+  overflow: hidden
+}
+
+.friend-card {
+  .image:hover {
+    filter: brightness(70%);
+  }
+}
+
+.friend-content {
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  transform: translate(-10%, -50%);
+  background-color: white;
+
+  h5 {
+    font-weight: 700;
+    font-size: 20px;
+    color: blueviolet;
+  }
+
+  p {
+    font-size: 13px;
+    color: rgb(100,100,100);
+  }
+}
+
+.active {
+  visibility: visible;
+}
+
+.disable {
+  visibility: hidden;
+}
+
 .friend-tile {
   background-color: white;
   height: 200px;

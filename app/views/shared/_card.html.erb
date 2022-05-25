@@ -19,3 +19,22 @@
           <% end %>
       </div>
   <% end %>
+
+<div class="friends">
+  <% @friends.each do |friend| %>
+    <div class="friend-card"
+      data-controller="card"
+      data-action="mouseover->card#showCard mouseout->card#hideCard"
+    >
+        <%= cl_image_tag friend.photo.key, height: 200, width: 400, crop: :fill, class:"image" %>
+        <div class="friend-content disable"
+              data-action="mouseover->card#showCard mouseout->card#hideCard"
+              data-card-target="content"
+        >
+          <h5><%= friend.name %></h5>
+          <h6><%= friend.category %></h6>
+          <p><%= friend.description %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
