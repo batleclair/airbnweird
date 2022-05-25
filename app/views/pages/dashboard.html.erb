@@ -1,0 +1,72 @@
+<div class="container mt-3 dashboard-div">
+
+  <div class="dashboard-purple-title d-flex justify-content-between align-middle">
+    <h2><%= current_user.name %></h2>
+    <h3>My dashboard</h3>
+  </div>
+
+  <div class="p-2">
+    <h3>Buyer dashboard - pending reservations</h3>
+    <hr>
+    <table class="dashboard-table">
+      <tr>
+        <th class="p-2">Friend</th>
+        <th class="p-2">Name</th>
+        <th class="p-2">Seller name</th>
+        <th class="p-2">Start date</th>
+        <th class="p-2">End date</th>
+        <th class="p-2">Daily price</th>
+        <th class="p-2">Total price</th>
+      </tr>
+      <% @bookings.each do |booking| %>
+        <tr>
+          <td class="p-2"><%= cl_image_tag booking.friend.photo.key, height: 50, width: 50, crop: :fill %></td>
+          <td class="p-2"><%= booking.friend.name %></td>
+          <td class="p-2"><%= booking.friend.user.name %></td>
+          <td class="p-2"><%= booking.start_date %></td>
+          <td class="p-2"><%= booking.end_date %></td>
+          <td class="p-2"><%= booking.friend.price %> €</td>
+          <td class="p-2"><%= booking.friend.price * (booking.end_date - booking.start_date) %> € %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <div class="p-2">
+    <h3>Seller dashboard</h3>
+    <hr>
+    <div>
+      <h4>My friend reservations</h4>
+      <div>
+        <table class="dashboard-table">
+          <tr>
+            <th class="p-2">Friend</th>
+            <th class="p-2">Name</th>
+            <th class="p-2">Buyer name</th>
+            <th class="p-2">Start date</th>
+            <th class="p-2">End date</th>
+            <th class="p-2">Daily price</th>
+            <th class="p-2">Total price</th>
+          </tr>
+          <% @sales.each do |sale| %>
+            <tr>
+              <td class="p-2"><%= cl_image_tag sale.friend.photo.key, height: 50, width: 50, crop: :fill %></td>
+              <td class="p-2"><%= sale.friend.name %></td>
+              <td class="p-2"><%= sale.user.name %></td>
+              <td class="p-2"><%= sale.start_date %></td>
+              <td class="p-2"><%= sale.end_date %></td>
+              <td class="p-2"><%= sale.friend.price %> €</td>
+              <td class="p-2"><%= sale.friend.price * (sale.end_date - sale.start_date) %> € %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    <div class="mt-3">
+      <h4>My own friends</h4>
+      <%= render "shared/card" %>
+    </div>
+
+    </div>
+  </div>
+
+</div>
