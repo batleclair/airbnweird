@@ -1,0 +1,13 @@
+<h1>The friends I booked</h1>
+<% @bookings.each do |booking| %>
+  <p><%= booking.friend.name %></p>
+  <p><%= booking.start_date %></p>
+  <p><%= booking.end_date %></p>
+  <p><%= booking.friend.price %></p>
+<% end %>
+
+<h1>My own friends</h1>
+
+<% @own_friends.each do |friend| %>
+  <p><%= friend.name %></p>
+<% end %>
