@@ -5,7 +5,11 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user_id = current_user.id
     @booking.friend_id = @friend.id
-    @booking.save
+    if @booking.save
+      redirect_to dashboard_path
+    else
+      render "friends/show", status: :unprocessable_entity
+    end
     authorize @booking
   end
 
