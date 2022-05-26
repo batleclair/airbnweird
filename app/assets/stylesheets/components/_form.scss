@@ -37,3 +37,16 @@
 .cancel {
   padding-left: 50px;
 }
+
+.btn-flat {
+  color: white;
+  padding: 8px max;
+  border-radius: 4px;
+  background: rgb(173, 102, 240);
+  transition: background 0.3s ease;
+  width: 100%;
+  &:hover {
+    background: rgb(151, 74, 223);
+    color: white;
+  }
+}

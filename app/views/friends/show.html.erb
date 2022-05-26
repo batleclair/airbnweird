@@ -1,7 +1,12 @@
 <div class="container mt-3 mb-3">
   <div class="d-flex">
     <div>
-      <div class="friend-large-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @friend.photo.key, height: 250, crop: :fill %>')"></div>
+      <% if @friend.photo.attached? %>
+        <div class="friend-large-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @friend.photo.key, height: 250, crop: :fill %>')"></div>
+      <% else %>
+        <div class="friend-large-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_tag 'https://picsum.photos/200', height: 200, width: 100, crop: :fill %>')"></div>
+      <% end %>
+
       <div class="friend-stats">
         <p><i class="fas fa-home"></i> Price <%= @friend.price %> euros</p>
         <p class="star-violet"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star-half-stroke"></i><i class="fa-regular fa-star"></i></p>
@@ -20,14 +25,16 @@
         <p>Owner's name: <%= @friend.user.name %></p>
       </div>
     </div>
-    <div class="card" data-controller="duration">
-      <h2><%= @friend.price %>€ day</h2>
-      <%= simple_form_for [@friend, @booking] do |f| %>
-        <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-        <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-        <%= f.submit class: "btn btn-primary", value: "Reserve" %>
+    <div class="card p-4" id="reservation" data-controller="duration">
+      <h2 data-duration_target="price" ><%= @friend.price %><font size="4">€ / day</font></h2>
+      <%= simple_form_for([@friend, @booking], data: { turbolinks:"false" }) do |f| %>
+        <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker", data: { duration_target: "startDate"}} %>
+        <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker", data: { duration_target: "endDate", action: "duration#price" }} %>
+        <div class='form-actions'>
+          <%= f.submit class: "btn btn-flat", value: "Reserve" %>
+        </div>
       <% end %>
-      <p class='price'></p>
+      <p data-duration-target = "price"></p>
     </div>
   </div>
    <div class="col-xs-9">

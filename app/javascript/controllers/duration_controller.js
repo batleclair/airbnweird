@@ -2,8 +2,16 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   connect() {
-    this.element.textContent = "Hello World!"
+    console.log("Hello World!")
   }
 
-  static targets = ["startDate", "endDate"]
+  static targets = ["startDate", "endDate", "totalPrice"]
+
+  price() {
+    endDate = this.endDateTarget.value
+    startDate = this.startDateTarget.value
+    if (endDate && startDate) {
+      this.priceTarget.innerHtml = endDate - startDate
+    }
+  }
 }
