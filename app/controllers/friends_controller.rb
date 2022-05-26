@@ -32,7 +32,6 @@ class FriendsController < ApplicationController
         lng: @friend.longitude,
         info_window: render_to_string(partial: "info_window", locals: {friend: @friend})
       }]
-    @reviews = Review.where(friend: @friend)
   end
 
   def edit

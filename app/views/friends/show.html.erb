@@ -9,7 +9,7 @@
 
       <div class="friend-stats">
         <p><i class="fas fa-home"></i> Price <%= @friend.price %> euros</p>
-        <p class="star-violet"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star-half-stroke"></i><i class="fa-regular fa-star"></i></p>
+        <p><strong><%= @friend.reviews.average(:rating) %></strong><span class="star-violet"><i class="fa-solid fa-star"></i></span></p>
       </div>
     </div>
     <div class="ms-3 me-3 col-xs-9 friend-details">
@@ -27,7 +27,7 @@
         <%= button_to "Destroy this friend", @friend, method: :delete if policy(@friend).destroy? %>
       </div>
     </div>
-    <% unless policy(@friend).edit? %> 
+    <% unless policy(@friend).edit? %>
       <div class="card p-4" id="reservation" data-controller="duration">
         <h2 data-duration_target="price" ><%= @friend.price %><font size="4">€ / day</font></h2>
         <%= simple_form_for([@friend, @booking], data: { turbolinks:"false" }) do |f| %>
@@ -41,15 +41,33 @@
       </div>
     <% end %>
   </div>
-   <div class="col-xs-9">
-      <hr>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-5">
+      <h5>Reviews about <strong><%= @friend.name %></strong></h5>
+      <% @friend.reviews.each do |review| %>
+        <% (review.rating).times do %>
+          <span class="star-violet"><i class="fa-solid fa-star"></i></span>
+        <% end %>
+        <% (5 - review.rating).times do %>
+          <span class="star-violet"><i class="fa-regular fa-star"></i></span>
+        <% end %>
+        <p><i class="fa-solid fa-quote-left me-2"></i><%= review.content %></p>
+        <p class="text-end"><%= review.booking.user.name %>, <i><%= review.booking.end_date %></i></p>
+        <hr>
+      <% end %>
+    </div>
+   <div class="col-7">
       <h5>Exact location information is provided after a booking is confirmed.</h5>
       <div
         data-controller="map"
         style="width: 100%;
         height: 400px;"
         data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-      ></div>
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
     </div>
+  </div>
 </div>
