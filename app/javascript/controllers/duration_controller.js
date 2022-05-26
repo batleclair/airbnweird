@@ -1,17 +1,19 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
+  static targets = ["startDate", "endDate", "totalPrice", "price"]
+
   connect() {
     console.log("Hello World!")
   }
 
-  static targets = ["startDate", "endDate", "totalPrice"]
-
   price() {
-    endDate = this.endDateTarget.value
-    startDate = this.startDateTarget.value
+    const endDate = Date.parse(this.endDateTarget.value)
+    const startDate = Date.parse(this.startDateTarget.value)
+    const price = parseInt(this.priceTarget.innerHTML,10)
     if (endDate && startDate) {
-      this.priceTarget.innerHtml = endDate - startDate
+      const duration = (endDate - startDate) / (86400000) + 1
+      this.totalPriceTarget.innerHTML = `${duration * price}€`
     }
   }
 }
