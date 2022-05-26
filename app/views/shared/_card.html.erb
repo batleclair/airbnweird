@@ -4,9 +4,12 @@
       <div class="friend-card"
         data-controller="card"
         data-action="mouseover->card#showCard mouseout->card#hideCard">
-          <div class="image"
-            data-card-target="image">
-              <%= cl_image_tag friend.photo.key, class:"image" %>
+          <div class="image" data-card-target="image">
+            <% if friend.photo.attached? %>
+              <%= cl_image_tag friend.photo.key, height: 200, width: 100, crop: :fill %>
+            <% else %>
+              <%= image_tag 'https://picsum.photos/200', height: 200, width: 100, crop: :fill %>
+            <% end %>
           </div>
           <div class="friend-content disable w-100 h-100"
             data-card-target="content">
