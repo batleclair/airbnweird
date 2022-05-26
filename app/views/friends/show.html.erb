@@ -18,17 +18,22 @@
         <hr>
         <h4><strong> Friend owner</strong></h4>
         <p>Owner's name: <%= @friend.user.name %></p>
+        <%= link_to "Edit this friend", edit_friend_path(@friend), class:"btn btn-primary", method: :edit if policy(@friend).edit? %>
+        <%= button_to "Destroy this friend", @friend, method: :delete if policy(@friend).destroy? %>
       </div>
     </div>
-    <div class="card" data-controller="duration">
-      <h2><%= @friend.price %>€ day</h2>
-      <%= simple_form_for [@friend, @booking] do |f| %>
-        <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-        <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-        <%= f.submit class: "btn btn-primary", value: "Reserve" %>
-      <% end %>
-      <p class='price'></p>
-    </div>
+    <% unless policy(@friend).edit? %>
+      <div class="card " data-controller="duration">
+        <h2><%= @friend.price %>€ day</h2>
+          <%= simple_form_for [@friend, @booking] do |f|  %>
+            <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+            <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+            <%= f.submit class: "btn btn-primary", value: "Reserve" %>
+        <% end %>
+        <p class='price'></p>
+      </div>
+    <% end %>
+
   </div>
    <div class="col-xs-9">
       <hr>
