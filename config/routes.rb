@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'reviews/new'
   devise_for :users
   root to: "pages#home"
   get 'dashboard', to: "pages#dashboard"
@@ -9,5 +8,8 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :friends, only: [:index, :destroy, :show, :create, :new, :edit, :update] do
     resources :bookings, only: [:create]
+  end
+  resources :bookings, only: [] do
+    resources :reviews, only: [:new, :create]
   end
 end
