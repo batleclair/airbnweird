@@ -1,9 +1,13 @@
 class FriendsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show search]
-
   def index
     @friends = policy_scope(Friend)
     authorize @friends
+    if params[:query].present?
+      @friends = Friend.search_by_name_description_category_language_and_price(params[:query])
+    else
+      @friends = Friend.all
+    end
   end
 
   def new
