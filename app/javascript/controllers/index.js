@@ -19,5 +19,15 @@ application.register("hello", HelloController)
 import MapController from "./map_controller.js"
 application.register("map", MapController)
 
+
 import SearchBarController from "./search_bar_controller.js"
 application.register("search-bar", SearchBarController)
+
+
+import { Application } from "@hotwired/stimulus"
+import { definitionsFromContext } from "@hotwired/stimulus-webpack-helpers"
+
+window.Stimulus = Application.start()
+const context = require.context(".", true, /\.js$/)
+Stimulus.load(definitionsFromContext(context))
+
