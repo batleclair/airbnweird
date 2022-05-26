@@ -1,6 +1,26 @@
+<div class="search-bar" style="background-image: linear-gradient(-225deg, rgba(7, 14, 18, 0.59) 100%, rgba(0,36,61,0.6) 100%), url('https://cdn.pixabay.com/photo/2016/02/03/08/32/banner-1176676_960_720.jpg'); background-position: center;">
+  <div class="">
+    <form data-controller="search-i" id="my-search-bar" action="" style="position: relative;">
+      <%= form_tag friends_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          style: "border-style: none: ",
+          placeholder: "Find a friend"
+          %>
+          <i data-search-bar-target="icon"
+             <%# data-action="hover->search-bar#expand" %>
+              class="fa fa-search"></i>
+      <% end %>
+      <a href="javascript:void(0)" id="clear-btn" data-action="click->search-bar#clearInput">Clear</a>
+    </form>
+  </div>
+</div>
+
 <div class="container">
   <hr>
-  <h2 style= "text-align: center"><%=@friends.length%> friends available for you <%=@current_user.name%> </h2>
+  <% if user_signed_in? %>
+      <h2 style= "text-align: center"><%=@friends.length%> friends available for you <%=@current_user.name%> </h2>
+  <% end %>
   <hr>
   <%= render "shared/card" %>
 </div>
