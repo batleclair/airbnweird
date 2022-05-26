@@ -1,7 +1,8 @@
 class Friend < ApplicationRecord
   belongs_to :user
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   has_many :reviews, through: :bookings
+
   has_many :users, through: :bookings
   has_one_attached :photo
   geocoded_by :address

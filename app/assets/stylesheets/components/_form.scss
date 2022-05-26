@@ -7,9 +7,14 @@
 }
 
 .form-inputs {
-  padding: 10px;
+  padding: 40px;
   width: 600px;
   justify-content: center;
+  border-radius: 10px;
+  box-shadow: 4px 4px 4px 2px #9760c1;
+  margin: 10px;
+  background-color: $banner_background;
+  color: white;
 }
 
 .form-control {
@@ -23,6 +28,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin: 20px;
 
   #log-in {
     margin-top: 5px;
@@ -36,4 +42,17 @@
 
 .cancel {
   padding-left: 50px;
+}
+
+.btn-flat {
+  color: white;
+  padding: 8px max;
+  border-radius: 4px;
+  background: rgb(173, 102, 240);
+  transition: background 0.3s ease;
+  width: 100%;
+  &:hover {
+    background: rgb(151, 74, 223);
+    color: white;
+  }
 }

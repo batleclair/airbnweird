@@ -43,7 +43,7 @@ class FriendsController < ApplicationController
   def update
     @friend = Friend.find(params[:id])
     @friend.update(friend_params)
-    redirect_to new_user_friend_path(@friend)
+    redirect_to friend_path(@friend)
     authorize @friend
   end
 
