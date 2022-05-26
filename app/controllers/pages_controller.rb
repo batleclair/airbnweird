@@ -12,5 +12,6 @@ class PagesController < ApplicationController
     @friends.each do |friend|
       friend.bookings.each { |booking| @sales << booking }
     end
+    @review = Review.new
   end
 end

@@ -17,6 +17,7 @@
         <th class="p-2">End date</th>
         <th class="p-2">Daily price</th>
         <th class="p-2">Total price</th>
+        <th class="p-2">Review</th>
       </tr>
       <% @bookings.each do |booking| %>
         <tr>
@@ -26,7 +27,14 @@
           <td class="p-2"><%= booking.start_date %></td>
           <td class="p-2"><%= booking.end_date %></td>
           <td class="p-2"><%= booking.friend.price %> €</td>
-          <td class="p-2"><%= (booking.friend.price * (booking.end_date - booking.start_date)).round %> €</td>
+          <td class="p-2"><%= (booking.friend.price * (booking.end_date - booking.start_date + 1)).round %> €</td>
+          <td class="p-2">
+            <% if booking.ratable? %>
+              <%= link_to 'Rate!', new_booking_review_path(booking) %>
+            <% else %>
+              <%= booking.review_display %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </table>
