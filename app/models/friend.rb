@@ -15,3 +15,4 @@ class Friend < ApplicationRecord
       tsearch: { prefix: true }
     }
 end
+# TEST
