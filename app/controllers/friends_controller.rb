@@ -29,6 +29,7 @@ class FriendsController < ApplicationController
   def show
     @friend = Friend.find(params[:id])
     @booking = Booking.new
+    @review = Review.new
     authorize @friend
     @markers =
       [{
