@@ -5,8 +5,10 @@
         data-controller="card"
         data-action="mouseover->card#showCard mouseout->card#hideCard">
           <div class="image" data-card-target="image">
-            <% if friend.photo.attached? %>
-              <%= cl_image_tag friend.photo.key, height: 200, width: 400, crop: :fill %>
+            <% if friend.photos.attached? %>
+              <% friend.photos.each do |photo| %>
+                <div class="friend-large-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>')"></div>
+              <% end %>
             <% else %>
               <%= image_tag 'https://picsum.photos/200', height: 200, width: 400, crop: :fill %>
             <% end %>
@@ -23,3 +25,5 @@
     <% end %>
   <% end %>
 </div>
+
+<% console %>

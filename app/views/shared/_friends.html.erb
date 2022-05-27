@@ -3,8 +3,10 @@
         <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-3">
           <%= link_to friend_path(friend.id), class: "link_card" do %>
             <div class="friend-tile">
-              <% if friend.photo.attached? %>
-                <%= cl_image_tag friend.photo.key, height: 200, width: 100, crop: :fill %>
+              <% if @friend.photos.attached? %>
+                <% @friend.photos.each do |photo| %>
+                  <div class="friend-large-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>')"></div>
+                <% end %>
               <% else %>
                 <%= image_tag 'https://picsum.photos/200', height: 200, width: 100, crop: :fill %>
               <% end %>
