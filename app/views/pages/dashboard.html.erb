@@ -13,26 +13,28 @@
         <th class="p-2">Friend</th>
         <th class="p-2">Name</th>
         <th class="p-2">Seller name</th>
-        <th class="p-2">Start date</th>
-        <th class="p-2">End date</th>
-        <th class="p-2">Daily price</th>
-        <th class="p-2">Total price</th>
-        <th class="p-2">Review</th>
+        <th class="p-2 text-center">Start date</th>
+        <th class="p-2 text-center">End date</th>
+        <th class="p-2 text-center">Daily price</th>
+        <th class="p-2 text-center">Total price</th>
+        <th class="p-2 text-center">Review</th>
       </tr>
       <% @bookings.each do |booking| %>
         <tr>
           <td class="p-2"><%= cl_image_tag booking.friend.photos[0].key, height: 50, width: 50, crop: :fill %></td>
-          <td class="p-2"><%= booking.friend.name %></td>
+          <td class="p-2"><%= link_to booking.friend.name, friend_path(booking.friend), class: "table-link" %></td>
           <td class="p-2"><%= booking.friend.user.name %></td>
-          <td class="p-2"><%= booking.start_date %></td>
-          <td class="p-2"><%= booking.end_date %></td>
-          <td class="p-2"><%= booking.friend.price %> €</td>
-          <td class="p-2"><%= (booking.friend.price * (booking.end_date - booking.start_date + 1)).round %> €</td>
-          <td class="p-2">
+          <td class="p-2 text-center"><%= booking.start_date %></td>
+          <td class="p-2 text-center"><%= booking.end_date %></td>
+          <td class="p-2 text-center"><%= booking.friend.price %> €</td>
+          <td class="p-2 text-center"><%= (booking.friend.price * (booking.end_date - booking.start_date + 1)).round %> €</td>
+          <td class="p-2 text-center">
             <% if booking.ratable? %>
-              <%= link_to 'Rate!', new_booking_review_path(booking) %>
+              <%= link_to 'Rate!', new_booking_review_path(booking), class: "btn btn-flat" %>
             <% else %>
-              <%= booking.review_display %>
+              <span><%= booking.review_display %> <% if booking.review.present?  %>
+              <i class="fa-solid fa-star star-violet"></i>
+              <% end %></span>
             <% end %>
           </td>
         </tr>
@@ -58,7 +60,7 @@
           </tr>
           <% @sales.each do |sale| %>
             <tr>
-              <td class="p-2"><%= cl_image_tag sale.friend.photo.key, height: 50, width: 50, crop: :fill %></td>
+              <td class="p-2"><%= cl_image_tag sale.friend.photos[0].key, height: 50, width: 50, crop: :fill %></td>
               <td class="p-2"><%= sale.friend.name %></td>
               <td class="p-2"><%= sale.user.name %></td>
               <td class="p-2"><%= sale.start_date %></td>

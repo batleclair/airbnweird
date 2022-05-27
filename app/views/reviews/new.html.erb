@@ -1,8 +1,11 @@
+<div class="container pt-3">
 <h1>Review your friend!</h1>
 <p>... Tell us about your special experience</p>
-
-<%= simple_form_for [@booking, @review] do |f| %>
-  <%= f.input :content %>
-  <%= f.input :rating %>
-  <%= f.submit class: "btn btn-primary" %>
-<% end %>
+    <div>
+      <%= simple_form_for [@booking, @review] do |f| %>
+        <%= f.input :content %>
+        <%= f.input :rating %>
+        <%= f.submit class: "btn btn-primary" %>
+      <% end %>
+  </div>
+</div>
