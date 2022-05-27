@@ -1,5 +1,4 @@
 #my-search-bar {
-  position: relative;
   left: 50%;
   transform: translate(-50%,-50%);
   transition: all 1s;
@@ -13,8 +12,14 @@
   input {display: none;}
 }
 
-.search-i {
+.search-bar {
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-i {
+  align-items: ce;
 }
 #search-input {
   position: absolute;
@@ -45,7 +50,6 @@
   font-size: 1.2em;
   transition: all 1s;
 }
-
 
 #my-search-bar:hover,
 #my-search-bar:valid{
