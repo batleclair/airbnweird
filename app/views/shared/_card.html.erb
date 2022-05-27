@@ -9,13 +9,21 @@
               <div class="carousel-item active">
                 <% if friend.photos.attached? %>
                   <% friend.photos.each_with_index do |photo,i| %>
-                    <div class="carousel-item <%= 'active' if i==0 %>">
+                    <div class="carousel-item active">
                       <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
                     </div>
                   <% end %>
                 <% else %>
                   <div class="friend-large-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_tag 'https://picsum.photos/200', height: 200, width: 100, crop: :fill %>')"></div>
                 <% end %>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
               </div>
             </div>
           </div>
