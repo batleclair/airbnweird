@@ -18,10 +18,17 @@
         <th class="p-2">Daily price</th>
         <th class="p-2">Total price</th>
         <th class="p-2">Review</th>
+        <th class="p-2">Status</th>
       </tr>
       <% @bookings.each do |booking| %>
         <tr>
-          <td class="p-2"><%= cl_image_tag booking.friend.photo.key, height: 50, width: 50, crop: :fill %></td>
+          <td class="p-2">
+            <% if booking.friend.photo.attached? %>
+              <%= cl_image_tag booking.friend.photo.key, height: 50, width: 50, crop: :fill %>
+            <% else  %>
+              <%= image_tag 'https://picsum.photos/200', height: 50, width: 50, crop: :fill %>
+            <% end %>
+          </td>
           <td class="p-2"><%= booking.friend.name %></td>
           <td class="p-2"><%= booking.friend.user.name %></td>
           <td class="p-2"><%= booking.start_date %></td>
@@ -35,6 +42,7 @@
               <%= booking.review_display %>
             <% end %>
           </td>
+        <th class="p-2"><%= booking.status %></th>
         </tr>
       <% end %>
     </table>
@@ -55,16 +63,29 @@
             <th class="p-2">End date</th>
             <th class="p-2">Daily price</th>
             <th class="p-2">Total price</th>
+            <th class="p-2">Status</th>
           </tr>
           <% @sales.each do |sale| %>
             <tr>
-              <td class="p-2"><%= cl_image_tag sale.friend.photo.key, height: 50, width: 50, crop: :fill %></td>
+              <td class="p-2">
+                <% if sale.friend.photo.attached? %>
+                  <%= cl_image_tag sale.friend.photo.key, height: 50, width: 50, crop: :fill %>
+                <% else  %>
+                  <%= image_tag 'https://picsum.photos/200', height: 50, width: 50, crop: :fill %>
+                <% end %>
+              </td>
               <td class="p-2"><%= sale.friend.name %></td>
               <td class="p-2"><%= sale.user.name %></td>
               <td class="p-2"><%= sale.start_date %></td>
               <td class="p-2"><%= sale.end_date %></td>
               <td class="p-2"><%= sale.friend.price %> €</td>
               <td class="p-2"><%= (sale.friend.price * (sale.end_date - sale.start_date)).round %> €</td>
+              <th class="p-2" data-controller="status"><%= sale.status %>
+                <% if sale.status == "pending" %>
+                  <button class="btn btn-primary" data-action="status#accept">accept</button>
+                  <button class="btn btn-primary" data-action="status#refuse">refuse</button>
+                <% end %>
+              </th>
             </tr>
           <% end %>
         </table>
