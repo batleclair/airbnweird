@@ -78,21 +78,40 @@
   <hr>
 
   <div class="row">
-    <div class="col-5">
+    <div class="col-6">
       <h5>Reviews about <strong><%= @friend.name %></strong></h5>
-      <% @friend.reviews.each do |review| %>
-        <% (review.rating).times do %>
-          <span class="star-violet"><i class="fa-solid fa-star"></i></span>
+      <div data-controller="insert-in-list">
+        <% @friend.reviews.each do |review| %>
+        <div data-insert-in-list-target="items">
+            <% (review.rating).times do %>
+              <span class="star-violet"><i class="fa-solid fa-star"></i></span>
+            <% end %>
+            <% (5 - review.rating).times do %>
+              <span class="star-violet"><i class="fa-regular fa-star"></i></span>
+            <% end %>
+            <p><i class="fa-solid fa-quote-left me-2"></i><%= review.content %></p>
+            <p class="text-end"><%= review.booking.user.name %>, <i><%= review.booking.created_at %></i></p>
+            <hr>
+          <% end %>
+        </div>
+      </div>
+      <div>
+        <% if !current_user.nil? %>
+          <% if !Booking.where(user_id: current_user.id, friend_id:params[:id])[0].nil? %>
+            <%= simple_form_for([Booking.where(user_id: current_user.id, friend_id:params[:id])[0], @review],
+                data: {
+                  insert_in_list_target: "form",
+                  action: "submit->insert-in-list#send"
+                }) do |f| %>
+              <%= f.input :content %>
+              <%= f.input :rating %>
+              <%= f.submit class: "btn btn-primary" %>
+            <% end %>
+          <% end %>
         <% end %>
-        <% (5 - review.rating).times do %>
-          <span class="star-violet"><i class="fa-regular fa-star"></i></span>
-        <% end %>
-        <p><i class="fa-solid fa-quote-left me-2"></i><%= review.content %></p>
-        <p class="text-end"><%= review.booking.user.name %>, <i><%= review.booking.end_date %></i></p>
-        <hr>
-      <% end %>
+      </div>
     </div>
-   <div class="col-7">
+    <div class="col-12">
       <h5>Exact location information is provided after a booking is confirmed.</h5>
       <div
         data-controller="map"
@@ -103,4 +122,26 @@
       </div>
     </div>
   </div>
+</div>
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://picsum.photos/200 "style="height:100px" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://picsum.photos/200" style="height:100px"  class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://picsum.photos/200" style="height:100px" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 </div>
