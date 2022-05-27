@@ -21,7 +21,7 @@
       </tr>
       <% @bookings.each do |booking| %>
         <tr>
-          <td class="p-2"><%= cl_image_tag booking.friend.photo.key, height: 50, width: 50, crop: :fill %></td>
+          <td class="p-2"><%= cl_image_tag booking.friend.photos[0].key, height: 50, width: 50, crop: :fill %></td>
           <td class="p-2"><%= booking.friend.name %></td>
           <td class="p-2"><%= booking.friend.user.name %></td>
           <td class="p-2"><%= booking.start_date %></td>
@@ -58,7 +58,7 @@
           </tr>
           <% @sales.each do |sale| %>
             <tr>
-              <td class="p-2"><%= cl_image_tag sale.friend.photo.key, height: 50, width: 50, crop: :fill %></td>
+              <td class="p-2"><%= cl_image_tag sale.friend.photos[0].key, height: 50, width: 50, crop: :fill %></td>
               <td class="p-2"><%= sale.friend.name %></td>
               <td class="p-2"><%= sale.user.name %></td>
               <td class="p-2"><%= sale.start_date %></td>
