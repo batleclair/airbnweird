@@ -70,9 +70,9 @@
   <hr>
 
   <div class="row">
-    <div class="col-5">
+    <div class="col-6">
+      <h5>Reviews about <strong><%= @friend.name %></strong></h5>
       <div data-controller="insert-in-list">
-        <h5>Reviews about <strong><%= @friend.name %></strong></h5>
         <% @friend.reviews.each do |review| %>
         <div data-insert-in-list-target="items">
             <% (review.rating).times do %>
@@ -88,21 +88,22 @@
         </div>
       </div>
       <div>
-        <% if !Booking.where(user_id: current_user.id, friend_id:params[:id])[0].nil? %>
-          <%= simple_form_for([Booking.where(user_id: current_user.id, friend_id:params[:id])[0], @review],
-              data: {
-                insert_in_list_target: "form",
-                action: "submit->insert-in-list#send"
-              }) do |f| %>
-            <%= f.input :content %>
-            <%= f.input :rating %>
-            <%= f.submit class: "btn btn-primary" %>
+        <% if !current_user.nil? %>
+          <% if !Booking.where(user_id: current_user.id, friend_id:params[:id])[0].nil? %>
+            <%= simple_form_for([Booking.where(user_id: current_user.id, friend_id:params[:id])[0], @review],
+                data: {
+                  insert_in_list_target: "form",
+                  action: "submit->insert-in-list#send"
+                }) do |f| %>
+              <%= f.input :content %>
+              <%= f.input :rating %>
+              <%= f.submit class: "btn btn-primary" %>
+            <% end %>
           <% end %>
         <% end %>
       </div>
     </div>
-  </div>
-  <div class="col-7">
+    <div class="col-12">
       <h5>Exact location information is provided after a booking is confirmed.</h5>
       <div
         data-controller="map"
