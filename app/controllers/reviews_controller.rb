@@ -10,14 +10,10 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.booking_id = params[:booking_id]
     @review.save
-    respond_to do |format|
-      if @review.save
-        format.html { redirect_to dashboard_path }
-        format.json
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json
-      end
+    if @review.save
+      redirect_to dashboard_path
+    else
+
     end
     authorize @review
   end
